@@ -1,33 +1,30 @@
-local g = vim.g
-local opt = vim.opt
+vim.g.mapleader = " "
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
-g.mapleader = " "
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
+vim.opt.clipboard = "unnamedplus"
+vim.opt.fileencoding = "utf-8"
+vim.opt.mouse = "a"
 
-opt.clipboard = "unnamedplus"
-opt.fileencoding = "utf-8"
-opt.mouse = "a"
+vim.opt.signcolumn = "yes"
 
-opt.signcolumn = "yes"
+vim.opt.termguicolors = true
+vim.opt.nu = true
+vim.opt.relativenumber = true
 
-opt.termguicolors = true
-opt.nu = true
-opt.relativenumber = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = true
+vim.opt.wrap = false
 
-opt.wrap = false
+vim.opt.smartindent = true
 
-opt.smartindent = true
+vim.opt.incsearch = true
 
-opt.incsearch = true
+vim.opt.scrolloff = 8
 
-opt.scrolloff = 8
-
-opt.updatetime = 50
+vim.opt.updatetime = 50
 
 require("core.keymaps")
