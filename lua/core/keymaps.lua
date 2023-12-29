@@ -5,7 +5,6 @@ local term_ops = { silent = true }
 
 -- Save File
 keymap("n", "<C-s>", ":w<CR>", {})
-
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
