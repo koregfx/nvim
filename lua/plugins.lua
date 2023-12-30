@@ -31,4 +31,7 @@ return {
             "hbs",
         },
     },
+    {
+        "ThePrimeagen/vim-be-good"
+    }
 }

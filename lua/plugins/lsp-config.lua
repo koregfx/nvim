@@ -1,11 +1,17 @@
 return {
     {
         "williamboman/mason.nvim",
-        config = function()
-            require("mason").setup({
-                PATH = "prepend",
-            })
-        end,
+        opts = {
+            PATH = "prepend",
+            ensure_installed = {
+                "rust-analyzer",
+                "typescript-language-server",
+                "eslint-lsp",
+                "prettier",
+                "stylua",
+                "eslint_d"
+            }
+        },
     },
     {
         "williamboman/mason-lspconfig.nvim",
@@ -16,7 +22,6 @@ return {
                 html = { filetypes = { "html", "twig", "hbs" } },
                 tailwindcss = {},
                 cssls = {},
-
                 lua_ls = {
                     Lua = {
                         workspace = { checkThirdParty = false },

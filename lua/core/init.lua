@@ -5,7 +5,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.clipboard = "unnamedplus"
 vim.opt.fileencoding = "utf-8"
 vim.opt.mouse = "a"
-
+vim.o.laststatus = 3
 vim.opt.signcolumn = "yes"
 
 vim.opt.termguicolors = true
