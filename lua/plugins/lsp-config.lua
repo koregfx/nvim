@@ -16,6 +16,7 @@ return {
                 html = { filetypes = { "html", "twig", "hbs" } },
                 tailwindcss = {},
                 cssls = {},
+
                 lua_ls = {
                     Lua = {
                         workspace = { checkThirdParty = false },
@@ -70,6 +71,7 @@ return {
                     vim.lsp.buf.format()
                 end, { desc = "Format current buffer with LSP" })
             end
+
             mason_lspconfig.setup_handlers({
                 function(server_name)
                     require("lspconfig")[server_name].setup({
@@ -97,11 +99,21 @@ return {
                                 runtime = {
                                     version = "LuaJIT",
                                 },
+                                    -- Tell the language server which version of Lua you're using
+                                    -- (most likely LuaJIT in the case of Neovim)
+                                    version = "LuaJIT",
+                                },
+                                -- Make the server aware of Neovim runtime files
                                 workspace = {
                                     checkThirdParty = false,
                                     library = {
                                         vim.env.VIMRUNTIME,
                                     },
+                                        -- "${3rd}/luv/library"
+                                        -- "${3rd}/busted/library",
+                                    },
+                                    -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+                                    -- library = vim.api.nvim_get_runtime_file("", true)
                                 },
                             },
                         })
@@ -111,6 +123,7 @@ return {
                     return true
                 end,
             })
+            lspconfig.tsserver.setup({})
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, {})
