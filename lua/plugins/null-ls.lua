@@ -1,5 +1,6 @@
 return {
     "nvimtools/none-ls.nvim",
+    event = "VeryLazy",
     config = function()
         local null_ls = require("null-ls")
         vim.lsp.buf.format({ timeout_ms = 2000 })
@@ -7,7 +8,6 @@ return {
             sources = {
                 null_ls.builtins.formatting.stylua,
                 null_ls.builtins.formatting.prettierd,
-                null_ls.builtins.completion.spell,
             },
         })
         vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
