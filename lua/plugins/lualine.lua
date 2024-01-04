@@ -1,5 +1,6 @@
 local mocha = require("catppuccin.palettes").get_palette("mocha")
 local frappe = require("catppuccin.palettes").get_palette("frappe")
+local icons = require("core.icons")
 local mode_color = {
 	n = mocha.blue,
 	i = mocha.green,
@@ -47,7 +48,7 @@ return {
 		options = {
 			theme = "catppuccin",
 			component_separators = " ",
-			section_separators = { left = "", right = "" },
+			section_separators = { left = icons.ui.BoldDividerLeft, right = icons.ui.BoldDividerRight },
 		},
 		sections = {
 			lualine_a = {
@@ -61,20 +62,20 @@ return {
 				},
 				{
 					function()
-						return " "
+						return icons.misc.Nvim .. " "
 					end,
 					color = function()
 						return { fg = mocha.crust, bg = mode_color[vim.fn.mode()] }
 					end,
 					padding = { right = 0, left = 0 },
-					separator = { left = "" },
+					separator = { left = icons.ui.BoldDividerLeft },
 				},
 				{
 					"mode",
 					color = function()
 						return { bg = mocha.surface0, fg = mode_color[vim.fn.mode()] }
 					end,
-					separator = { right = "" },
+					separator = { right = icons.ui.BoldDividerRight },
 					padding = 1,
 				},
 				{
@@ -91,7 +92,7 @@ return {
 					"filetype",
 					colored = false,
 					icon_only = true,
-					separator = { left = "" },
+					separator = { left = icons.ui.BoldDividerLeft },
 					icon = {
 						align = "left",
 						color = { fg = mocha.crust },
@@ -99,13 +100,21 @@ return {
 					color = { fg = mocha.crust, bg = frappe.red },
 					padding = { right = 1 },
 				},
-				{ "filename", color = { fg = frappe.red }, separator = { right = "", file_status = false } },
+				{
+					"filename",
+					color = { fg = frappe.red },
+					separator = { right = icons.ui.BoldDividerRight, file_status = false },
+				},
 			},
 			lualine_c = {
 				{ "branch" },
 				{
 					"diff",
-					symbols = { added = " ", modified = "󱨇 ", removed = " " },
+					symbols = {
+						added = icons.git.LineAdded,
+						modified = icons.git.LineModified,
+						removed = icons.git.LineRemoved,
+					},
 				},
 			},
 			lualine_x = {
@@ -116,13 +125,13 @@ return {
 			lualine_y = {
 				{
 					function()
-						return " "
+						return icons.ui.Gear .. " "
 					end,
 					color = function()
 						return { fg = mocha.crust, bg = mocha.green, gui = "bold" }
 					end,
 					padding = { right = 0, left = 0 },
-					separator = { left = "" },
+					separator = { left = icons.ui.BoldDividerLeft },
 				},
 				{
 					function()
@@ -140,7 +149,7 @@ return {
 						end
 						return msg
 					end,
-					separator = { right = "" },
+					separator = { right = icons.ui.BoldDividerRight },
 					color = { fg = mocha.green, gui = "bold" },
 				},
 				{
@@ -155,13 +164,13 @@ return {
 			lualine_z = {
 				{
 					function()
-						return " "
+						return icons.ui.ActiveFolder .. " "
 					end,
 					color = function()
 						return { fg = mocha.crust, bg = mocha.red, gui = "bold" }
 					end,
 					padding = { right = 0, left = 0 },
-					separator = { left = "" },
+					separator = { left = icons.ui.BoldDividerLeft },
 				},
 				{
 					function()
@@ -171,7 +180,7 @@ return {
 					end,
 					path = 2,
 					mode = 2,
-					separator = { right = "" },
+					separator = { right = icons.ui.BoldDividerRight },
 					color = { fg = mocha.red, bg = mocha.surface0, gui = "bold" },
 				},
 				{
@@ -185,15 +194,15 @@ return {
 
 				{
 					function()
-						return " "
+						return icons.kind.Keyword .. " "
 					end,
 					color = { fg = mocha.crust, bg = mocha.peach, gui = "bold" },
 					padding = { right = 0, left = 0 },
-					separator = { left = "" },
+					separator = { left = icons.ui.BoldDividerLeft },
 				},
 				{
 					"location",
-					separator = { right = "" },
+					separator = { right = icons.ui.BoldDividerRight },
 					color = { fg = mocha.peach, bg = mocha.surface0 },
 				},
 				{
