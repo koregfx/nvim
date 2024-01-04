@@ -1,4 +1,4 @@
-return {
+local M = {
 	"windwp/nvim-autopairs",
 	event = "InsertEnter",
 	opts = {
@@ -14,3 +14,5 @@ return {
 		},
 	},
 }
+
+return M

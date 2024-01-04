@@ -6,7 +6,7 @@ return {
 			"nvim-lua/plenary.nvim",
 		},
 		keys = {
-			{ "gg", mode = "n", ":LazyGit<CR>", { silent = true, noremap = true, desc = "LazyGit" } },
+			{ "<leader>gg", mode = "n", ":LazyGit<CR>", { silent = true, noremap = true, desc = "LazyGit" } },
 		},
 	},
 
