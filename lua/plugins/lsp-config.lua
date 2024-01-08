@@ -15,19 +15,21 @@ local function lsp_keymaps(bufnr)
 	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 end
 
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
+	--[[ if client.name == "tailwindcss" then
+		require("tailwindcss-colors").buf_attach(bufnr)
+	end ]]
 end
 
 function M.common_capabilities()
-	local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-	if status_ok then
-		return cmp_nvim_lsp.default_capabilities()
-	end
-
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities.textDocument.colorProvider = {
+		dynamicRegistration = true,
+	}
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
 	capabilities.textDocument.completion.completionItem.resolveSupport = {
 		properties = {
