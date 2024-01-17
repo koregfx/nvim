@@ -2,6 +2,8 @@ vim.g.mapleader = " "
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.o.shell = 'pwsh' -- Set default term to powershell
+
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.hlsearch = true
 vim.opt.swapfile = false -- creates a swapfile

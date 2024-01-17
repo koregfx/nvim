@@ -1,7 +1,9 @@
 local M = {
 	"NvChad/nvterm",
 }
+
 function M.config()
+	require("nvterm").setup()
 	local terminal = require("nvterm.terminal")
 
 	local toggle_modes = { "n", "t" }
