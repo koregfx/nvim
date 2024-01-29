@@ -2,7 +2,11 @@ vim.g.mapleader = " "
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.o.shell = 'pwsh' -- Set default term to powershell
+vim.o.shell = "powershell" -- Set default term to powershell
+-- 'pwsh' /// 'powershell'
+vim.o.shellcmdflag = "-command"
+vim.o.shellquote = '"'
+vim.o.shellxquote = ""
 
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.hlsearch = true
@@ -33,4 +37,3 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 50
-
