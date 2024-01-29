@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 vim.o.shell = "powershell" -- Set default term to powershell
 -- 'pwsh' /// 'powershell'
