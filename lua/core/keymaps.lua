@@ -15,8 +15,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
-keymap("v", "<A-j>", ":m '>+1<CR>gv-gv", opts)
-keymap("v", "<A-k>", ":m '<-2<CR>gv-gv", opts)
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
 keymap("n", "<A-j>", ":m +1<CR>==", opts)
 keymap("n", "<A-k>", ":m -2<CR>==", opts)
