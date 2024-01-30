@@ -1,6 +1,7 @@
 local M = {
 	-- Autocompletion
 	"hrsh7th/nvim-cmp",
+  event = { "BufReadPost", "BufNewFile" },
 	dependencies = {
 		-- Snippet Engine & its associated nvim-cmp source
 		"L3MON4D3/LuaSnip",
@@ -12,25 +13,22 @@ local M = {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-nvim-lua",
-
+		"onsails/lspkind.nvim",
 		-- Adds a number of user-friendly snippets
 		"rafamadriz/friendly-snippets",
-
-		{ "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
 	},
 }
 
 function M.config()
 	local cmp = require("cmp")
 	local luasnip = require("luasnip")
+	local lspkind = require("lspkind")
 	require("luasnip.loaders.from_vscode").lazy_load()
 
 	local check_backspace = function()
 		local col = vim.fn.col(".") - 1
 		return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 	end
-
-	local icons = require("core.icons")
 
 	cmp.setup({
 		snippet = {
@@ -88,44 +86,13 @@ function M.config()
 		---@diagnostic disable-next-line: missing-fields
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
-			format = function(entry, vim_item)
-				vim_item.kind = icons.kind[vim_item.kind]
-				vim_item.menu = ({
-					nvim_lsp = "",
-					nvim_lua = "",
-					luasnip = "",
-					buffer = "",
-					path = "",
-					emoji = "",
-				})[entry.source.name]
-				if entry.source.name == "copilot" then
-					vim_item.kind = icons.git.Octoface
-					vim_item.kind_hl_group = "CmpItemKindCopilot"
-				end
-
-				if entry.source.name == "cmp_tabnine" then
-					vim_item.kind = icons.misc.Robot
-					vim_item.kind_hl_group = "CmpItemKindTabnine"
-				end
-
-				if entry.source.name == "crates" then
-					vim_item.kind = icons.misc.Package
-					vim_item.kind_hl_group = "CmpItemKindCrate"
-				end
-
-				if entry.source.name == "lab.quick_data" then
-					vim_item.kind = icons.misc.CircuitBoard
-					vim_item.kind_hl_group = "CmpItemKindConstant"
-				end
-
-				if entry.source.name == "emoji" then
-					vim_item.kind = icons.misc.Smiley
-					vim_item.kind_hl_group = "CmpItemKindEmoji"
-				end
-
-				return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
-				-- return vim_item
-			end,
+			format = lspkind.cmp_format({
+				mode = "symbol_text",
+				maxwidth = 50,
+				ellipsis_char = "...",
+				symbol_map = {},
+			}),
+			-- return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
 		},
 		sources = {
 			{
