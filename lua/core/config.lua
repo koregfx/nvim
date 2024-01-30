@@ -1,6 +1,5 @@
 vim.g.mapleader = " "
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
+
 
 vim.o.shell = "powershell" -- Set default term to powershell
 -- 'pwsh' /// 'powershell'
@@ -18,7 +17,6 @@ vim.opt.mouse = "a"
 vim.o.laststatus = 3
 vim.opt.signcolumn = "yes"
 vim.opt.showtabline = 1 -- always show tabs
-
 vim.opt.termguicolors = true
 vim.opt.nu = true
 vim.opt.relativenumber = true
