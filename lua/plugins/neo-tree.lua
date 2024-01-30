@@ -10,7 +10,7 @@ local M = {
 }
 
 function M.config()
-	vim.keymap.set("n", "<leader>e", ":Neotree<CR>", { silent = true })
+	vim.keymap.set("n", "<leader>e", ":Neotree left<CR>", { silent = true })
 	require("neo-tree").setup({
 		sources = { "filesystem", "buffers", "git_status", "document_symbols" },
 		open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
