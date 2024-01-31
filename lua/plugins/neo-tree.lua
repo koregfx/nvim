@@ -10,7 +10,13 @@ local M = {
 }
 
 function M.config()
+	vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+	vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+	vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+	vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+
 	vim.keymap.set("n", "<leader>e", ":Neotree left<CR>", { silent = true })
+	local icons = require("core.icons")
 	require("neo-tree").setup({
 		sources = { "filesystem", "buffers", "git_status", "document_symbols" },
 		open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
@@ -20,6 +26,23 @@ function M.config()
 			use_libuv_file_watcher = true,
 		},
 		default_component_configs = {
+
+			git_status = {
+				symbols = {
+					-- Change type
+					added = icons.git.LineAdded, -- or "✚", but this is redundant info if you use git_status_colors on the name
+					modified = icons.git.LineModified, -- or "", but this is redundant info if you use git_status_colors on the name
+					deleted = icons.git.FileDeleted, -- this can only be used in the git_status source
+					renamed = "󰁕", -- this can only be used in the git_status source
+					-- Status type
+					untracked = "",
+					ignored = "",
+					unstaged = "󰄱",
+					staged = "",
+					conflict = "",
+				},
+			},
+
 			indent = {
 				with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
 				expander_collapsed = "",
