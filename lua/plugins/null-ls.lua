@@ -1,6 +1,6 @@
 local M = {
 	"nvimtools/none-ls.nvim",
-	event = "VeryLazy",
+  event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 }
 
 function M.config()

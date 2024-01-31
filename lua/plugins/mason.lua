@@ -1,7 +1,8 @@
 local M = {
 	"williamboman/mason-lspconfig.nvim",
+
 	dependencies = {
-		"williamboman/mason.nvim",
+		{ "williamboman/mason.nvim"},
 		"nvim-lua/plenary.nvim",
 	},
 }
@@ -12,6 +13,11 @@ function M.config()
 	require("mason").setup({
 		ui = {
 			border = "rounded",
+		},
+		ensure_installed = {
+			"stylua",
+			"eslint_d",
+			"prettierd",
 		},
 	})
 	require("mason-lspconfig").setup({

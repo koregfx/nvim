@@ -1,6 +1,6 @@
 local M = {
 	"neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile" },    
+  event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 	dependencies = {
 		"folke/neodev.nvim",
 	},
@@ -12,7 +12,7 @@ local function lsp_keymaps(bufnr)
 	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, { noremap = true, silent = true, buffer = bufnr })
+  vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, { noremap = true, silent = true, buffer = bufnr })
 	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
