@@ -45,6 +45,7 @@ function M.config()
 				},
 				never_show_by_pattern = { -- uses glob style patterns
 					--".null-ls_*",
+					"*.meta",
 				},
 			},
 		},
