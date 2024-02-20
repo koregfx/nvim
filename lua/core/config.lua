@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Set default term to powershell
-vim.o.shell = "powershell"
+vim.o.shell = "pwsh"
 -- 'pwsh' /// 'powershell'
 vim.o.shellcmdflag = "-command"
 vim.o.shellquote = '"'
@@ -19,10 +19,9 @@ vim.opt.incsearch = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- Enable ignorecase + smartcase for better searching 
+-- Enable ignorecase + smartcase for better searching
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-
 
 -- Enable mouse mode
 vim.opt.mouse = "a"
@@ -40,11 +39,10 @@ vim.opt.showtabline = 1 -- always show tabs
 -- Enable 24-bit color
 vim.opt.termguicolors = true
 
--- Enable relative line numbers 
+-- Enable relative line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
-
 
 -- Set tabs to 2 spaces
 vim.opt.tabstop = 2
@@ -61,11 +59,13 @@ vim.opt.breakindent = true
 --Disable text wrap
 vim.opt.wrap = false
 
-
-
 vim.opt.scrolloff = 8
-
 
 vim.opt.updatetime = 50
 
 vim.opt.completeopt = { "menuone", "noselect" }
+
+-- Neovide Config
+if vim.g.neovide then
+	vim.o.guifont = "CaskaydiaCove Nerd Font"
+end
