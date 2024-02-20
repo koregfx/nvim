@@ -12,6 +12,12 @@ function M.config()
 		autotag = {
 			enable = true,
 		},
+		ensure_installed = {
+			"regex",
+			"bash",
+			"markdown",
+			"markdown_inline",
+		},
 	})
 end
 
