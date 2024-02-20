@@ -16,7 +16,7 @@ local function lsp_keymaps(bufnr)
 	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+	keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 end
 
 M.on_attach = function(client, bufnr)
