@@ -6,7 +6,6 @@ function M.config()
 	local configs = require("nvim-treesitter.configs")
 
 	configs.setup({
-		auto_install = true,
 		highlight = { enable = true },
 		indent = { enable = true },
 		autotag = {
@@ -15,7 +14,18 @@ function M.config()
 		ensure_installed = {
 			"regex",
 			"bash",
-			"markdown",
+      "rust",
+      "c_sharp",
+      "astro",
+      "css",
+      "dockerfile",
+      "dot",
+      "lua",
+      "sql",
+      "toml",
+      "typescript",
+      "javascript",
+      "markdown",
 			"markdown_inline",
 		},
 	})

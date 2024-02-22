@@ -9,7 +9,9 @@ local servers = {
 	"yamlls",
 	"tailwindcss",
 	"prismals",
-  "csharp_ls"
+  "csharp_ls",
+  "taplo",
+  "rust_analyzer",
 }
 
 return servers
