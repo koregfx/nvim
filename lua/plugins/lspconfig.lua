@@ -65,19 +65,7 @@ function M.config()
   local lspconfig = require 'lspconfig'
   local icons = require 'kore.icons'
   -- lspconfig
-  local servers = {
-    'lua_ls',
-    'cssls',
-    'html',
-    'tsserver',
-    'eslint',
-    'tsserver',
-    'rust_analyzer',
-    'bashls',
-    'jsonls',
-    'yamlls',
-  }
-
+  local servers = require 'kore.servers'
   local default_diagnostic_config = {
     signs = {
       active = true,
@@ -118,16 +106,15 @@ function M.config()
       capabilities = M.common_capabilities(),
     }
 
-    print(server)
-    require("kore.helpers").printTable(opts)
     local require_ok, settings = pcall(require, 'plugins.lspsettings.' .. server)
-    print(require_ok)
     if require_ok then
       opts = vim.tbl_deep_extend('force', settings, opts)
     end
     if server == 'lua_ls' then
       require('neodev').setup {}
     end
+    -- print(server)
+    -- require("kore.helpers").printTable(settings)
     lspconfig[server].setup(opts)
   end
 end

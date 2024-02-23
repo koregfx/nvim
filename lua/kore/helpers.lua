@@ -1,30 +1,19 @@
 local M = {}
 
-local function stringTable(list, i)
-  local listString = ''
-  --~ begin of the list so write the {
-  if not i then
-    listString = listString .. '{'
-  end
-
-  i = i or 1
-  local element = list[i]
-  --~ it may be the end of the list
-  if not element then
-    return listString .. '}'
-  end
-  --~ if the element is a list too call it recursively
-  if type(element) == 'table' then
-    listString = listString .. stringTable(element)
-  else
-    listString = listString .. element
-  end
-
-  return listString .. ', ' .. stringTable(list, i + 1)
+function dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
 end
-
 function M.printTable(table)
-  print(stringTable(table))
+  print(dump(table))
 end
 
 function M.split(pString, pPattern)

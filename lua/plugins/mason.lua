@@ -4,16 +4,16 @@ local M = {
     'williamboman/mason.nvim',
   },
 }
-
+M.servers = require 'kore.servers'
 function M.config()
   require('mason').setup {
     ui = {
       border = 'rounded',
     },
   }
-
   require('mason-lspconfig').setup {
-    automatic_installation = true,
+    ensure_installed = M.servers
+    
   }
 end
 
