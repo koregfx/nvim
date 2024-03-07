@@ -2,11 +2,11 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set default term to powershell
-vim.o.shell = "pwsh"
+-- vim.o.shell = "pwsh"
 -- 'pwsh' /// 'powershell'
-vim.o.shellcmdflag = "-command"
-vim.o.shellquote = '"'
-vim.o.shellxquote = ""
+-- vim.o.shellcmdflag = "-command"
+-- vim.o.shellquote = '"'
+-- vim.o.shellxquote = ""
 
 -- enable persistent undo
 vim.opt.undofile = true
