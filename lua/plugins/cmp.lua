@@ -6,7 +6,6 @@ local M = {
     -- Snippet Engine & its associated nvim-cmp source
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
-
     -- Adds LSP completion capabilities
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-emoji',
@@ -24,7 +23,6 @@ function M.config()
   local luasnip = require 'luasnip'
   local lspkind = require 'lspkind'
   require('luasnip.loaders.from_vscode').lazy_load()
-
   local check_backspace = function()
     local col = vim.fn.col '.' - 1
     return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s'
@@ -80,12 +78,10 @@ function M.config()
     formatting = {
       fields = { 'kind', 'abbr', 'menu' },
       format = lspkind.cmp_format {
-        mode = 'symbol_text',
+        mode = 'symbol',
         maxwidth = 50,
         ellipsis_char = '...',
-        symbol_map = {},
       },
-      -- return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
     },
     sources = {
       { name = 'nvim_lsp' },

@@ -3,10 +3,10 @@ local M = {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    'windwp/nvim-ts-autotag',
   },
   build = ':TSUpdate',
 }
-
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -34,6 +34,9 @@ function M.config()
         scope_incremental = '<c-s>',
         node_decremental = '<M-space>',
       },
+    },
+    autotag = {
+      enable = true,
     },
     textobjects = {
       select = {

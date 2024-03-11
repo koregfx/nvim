@@ -109,14 +109,101 @@ local M = { -- LSP Configuration & Plugins
       cssls = {},
       html = {},
       tsserver = {},
+      prismals = {},
       eslint = {},
-      rust_analyzer = {},
       bashls = {},
-      jsonls = {},
+      jsonls = {
+        settings = {
+          json = {
+            schemas = require('schemastore').json.schemas(),
+          },
+        },
+        setup = {
+          commands = {
+            Format = {
+              function()
+                vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line '$', 0 })
+              end,
+            },
+          },
+        },
+      },
+      tailwindcss = {},
       yamlls = {},
-      rust_analyzer = {},
+      rust_analyzer = {
+        settings = {
+          ['rust-analyzer'] = {
+            assist = {
+              importEnforceGranularity = true,
+              importPrefix = 'create',
+            },
+            cache = {
+              warmup = false,
+            },
+            cachePriming = {
+              enable = false,
+            },
+            cargo = {
+              allFeatures = true,
+              buildScripts = {
+                enable = true,
+              },
+            },
+            completion = {
+              autoimport = {
+                enable = true,
+              },
+            },
+            diagnostics = {
+              experimental = {
+                enable = true,
+              },
+            },
+            imports = {
+              granularity = {
+                group = 'module',
+              },
+              prefix = 'self',
+            },
+            procMacros = {
+              enable = true,
+            },
+          },
+        },
+        diagnostics = {
+          enable = true,
+          experimental = {
+            enable = true,
+          },
+        },
+      },
 
-      lua_ls = {},
+      lua_ls = {
+        settings = {
+          Lua = {
+            format = {
+              enable = false,
+            },
+            diagnostics = {
+              globals = { 'vim' },
+            },
+            runtime = {
+              version = 'LuaJIT',
+            },
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                [vim.fn.expand '$VIMRUNTIME/lua'] = true,
+                [vim.fn.stdpath 'config' .. '/lua'] = true,
+              },
+            },
+            telemetry = {
+              enable = false,
+            },
+            hint = { enable = true },
+          },
+        },
+      },
     }
 
     -- Ensure the servers and tools above are installed
