@@ -2,4 +2,4 @@ local M = {
   'nvim-treesitter/nvim-treesitter-context',
 }
 
-return {}
+return M

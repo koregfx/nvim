@@ -2,7 +2,8 @@
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 --
-require 'kore'
+require 'kore.config'
+require 'kore.keymaps'
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -38,7 +39,7 @@ require('lazy').setup('plugins', {
     notify = false,
   },
 })
-
+vim.opt.laststatus = 3
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 

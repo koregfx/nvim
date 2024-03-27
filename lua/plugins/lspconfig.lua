@@ -112,6 +112,7 @@ local M = { -- LSP Configuration & Plugins
       prismals = {},
       eslint = {},
       bashls = {},
+      dockerls = {},
       jsonls = {
         settings = {
           json = {
