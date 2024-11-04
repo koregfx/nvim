@@ -60,4 +60,4 @@ local M = {
     return opts
   end,
 }
-return {}
+return M

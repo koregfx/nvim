@@ -7,11 +7,10 @@ local M = { -- Autoformat
       lsp_fallback = true,
     },
     formatters_by_ft = {
-      lua = { 'stylua' },
-      typescript = { { 'prettierd', 'prettier' } },
-      typescriptreact = { { 'prettierd', 'prettier' } },
-      javascript = { { 'prettierd', 'prettier' } },
-      javascriptreact = { { 'prettierd', 'prettier' } },
+      typescript = {  },
+      typescriptreact = {  },
+      javascript = {  },
+      javascriptreact = {  },
     },
   },
 }
