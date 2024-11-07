@@ -64,6 +64,8 @@ local M = { -- LSP Configuration & Plugins
         -- Opens a popup that displays documentation about the word under your cursor
         --  See `:help K` for why this keymap
         map('K', vim.lsp.buf.hover, 'Hover Documentation')
+        map('<C-k>', vim.lsp.buf.signature_help, 'Signature Help')
+        map('<leader>t', vim.diagnostic.open_float, 'Open Diagnostic')
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header
@@ -110,7 +112,27 @@ local M = { -- LSP Configuration & Plugins
       html = {},
       tsserver = {},
       prismals = {},
-      eslint = {},
+      eslint = {
+        setup = {
+          capabilities = capabilities,
+          flags = { debounce_text_changes = 500 },
+          filetypes = {
+            'typescript',
+            'typescriptreact',
+            'typescript.tsx',
+            'javacript.jsx',
+            'javacript',
+            'javacriptreact',
+          },
+          single_file_suport = true,
+          on_attach = function(client, bufnr)
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              buffer = bufnr,
+              command = 'EslintFixAll',
+            })
+          end,
+        },
+      },
       bashls = {},
       dockerls = {},
       jsonls = {
@@ -129,7 +151,6 @@ local M = { -- LSP Configuration & Plugins
           },
         },
       },
-      tailwindcss = {},
       yamlls = {},
       rust_analyzer = {
         settings = {
