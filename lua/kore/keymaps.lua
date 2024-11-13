@@ -17,6 +17,11 @@ keymap('n', '<C-u>', '<C-u>zz', opts)
 keymap('n', 'n', 'nzzzv', opts)
 keymap('n', 'N', 'Nzzzv', opts)
 
+keymap('n', '<A-h>', [[<cmd>vertical resize +5<cr>]], opts)
+keymap('n', '<A-j>', [[<cmd>vertical resize +5<cr>]], opts)
+keymap('n', '<A-k>', [[<cmd>vertical resize -5<cr>]], opts)
+keymap('n', '<A-l>', [[<cmd>vertical resize -5<cr>]], opts)
+
 -- Ident mode
 keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
@@ -28,6 +33,9 @@ keymap('n', '<A-j>', ':m +1<CR>==', opts)
 keymap('n', '<A-k>', ':m -2<CR>==', opts)
 
 keymap('v', 'p', '"_dP', opts)
+
+keymap('n', 'd', '"_d', opts)
+keymap('v', 'd', '"_d', opts)
 
 keymap('n', '<leader>no', '<cmd>noh<CR>', opts)
 
