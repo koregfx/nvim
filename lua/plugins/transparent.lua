@@ -23,8 +23,6 @@ local M = {
       'LineNr',
       'NonText',
       'SignColumn',
-      'CursorLine',
-      'CursorLineNr',
       'StatusLine',
       'StatusLineNC',
       'EndOfBuffer',
