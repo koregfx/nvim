@@ -6,6 +6,16 @@ local M = { -- LSP Configuration & Plugins
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
+    'saghen/blink.cmp',
+    {
+      'folke/lazydev.nvim',
+      ft = 'lua',
+      opts = {
+        library = {
+          { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        },
+      },
+    },
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { 'j-hui/fidget.nvim', opts = {} },
@@ -108,8 +118,7 @@ local M = { -- LSP Configuration & Plugins
     local servers = {
       cssls = {},
       html = {},
-      -- tsserver = {},
-      ts_ls = {},
+      tsserver = {},
       prismals = {},
       eslint = {
         setup = {
@@ -251,9 +260,6 @@ local M = { -- LSP Configuration & Plugins
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
-          -- This handles overriding only values explicitly passed
-          -- by the server configuration above. Useful when disabling
-          -- certain features of an LSP (for example, turning off formatting for tsserver)
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           server.capabilities = require('blink.cmp').get_lsp_capabilities(server.capabilities)
           require('lspconfig')[server_name].setup(server)

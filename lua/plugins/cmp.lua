@@ -1,6 +1,7 @@
 local M = {
   'saghen/blink.cmp',
   dependencies = 'rafamadriz/friendly-snippets',
+  build = "cargo build --release",
   version = '*',
   opts = {
     keymap = { preset = 'default' },
@@ -16,3 +17,4 @@ local M = {
   opts_extend = { 'sources.default' },
 }
 return M
+
