@@ -12,6 +12,22 @@ local M = {
 -- See `:help nvim-treesitter`
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 function M.config()
+  require('nvim-ts-autotag').setup {
+    opts = {
+      -- Defaults
+      enable_close = true, -- Auto close tags
+      enable_rename = true, -- Auto rename pairs of tags
+      enable_close_on_slash = false, -- Auto close on trailing </
+    },
+    -- Also override individual filetype configs, these take priority.
+    -- Empty by default, useful if one of the "opts" global settings
+    -- doesn't work well in a specific filetype
+    per_filetype = {
+      ['html'] = {
+        enable_close = false,
+      },
+    },
+  }
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = { 'c', 'cpp', 'lua', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
@@ -34,9 +50,6 @@ function M.config()
         scope_incremental = '<c-s>',
         node_decremental = '<M-space>',
       },
-    },
-    autotag = {
-      enable = true,
     },
     textobjects = {
       select = {

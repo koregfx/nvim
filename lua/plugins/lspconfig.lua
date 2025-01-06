@@ -96,8 +96,6 @@ local M = { -- LSP Configuration & Plugins
     --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
     --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
     --
@@ -110,7 +108,8 @@ local M = { -- LSP Configuration & Plugins
     local servers = {
       cssls = {},
       html = {},
-      tsserver = {},
+      -- tsserver = {},
+      ts_ls = {},
       prismals = {},
       eslint = {
         setup = {
@@ -241,6 +240,10 @@ local M = { -- LSP Configuration & Plugins
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format lua code
+      'eslint',
+      'jq',
+      'prettier',
+      'prettierd',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -252,6 +255,7 @@ local M = { -- LSP Configuration & Plugins
           -- by the server configuration above. Useful when disabling
           -- certain features of an LSP (for example, turning off formatting for tsserver)
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+          server.capabilities = require('blink.cmp').get_lsp_capabilities(server.capabilities)
           require('lspconfig')[server_name].setup(server)
         end,
       },
