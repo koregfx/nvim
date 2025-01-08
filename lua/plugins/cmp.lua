@@ -15,6 +15,7 @@ local M = {
     'onsails/lspkind.nvim',
     -- Adds a number of user-friendly snippets
     'rafamadriz/friendly-snippets',
+    'luckasRanarison/tailwind-tools.nvim',
   },
 }
 
@@ -81,6 +82,7 @@ function M.config()
         mode = 'symbol',
         maxwidth = 50,
         ellipsis_char = '...',
+        before = require('tailwind-tools.cmp').lspkind_format,
       },
     },
     sources = {

@@ -110,8 +110,8 @@ local M = { -- LSP Configuration & Plugins
     local servers = {
       cssls = {},
       html = {},
-      tsserver = {},
       prismals = {},
+      ts_ls = {},
       eslint = {
         setup = {
           capabilities = capabilities,
@@ -199,7 +199,6 @@ local M = { -- LSP Configuration & Plugins
           },
         },
       },
-
       lua_ls = {
         settings = {
           Lua = {
