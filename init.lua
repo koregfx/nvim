@@ -32,7 +32,7 @@ require('lazy').setup('plugins', {
   },
   version = nil,
   install = {
-    colorscheme = { 'catppuccin', 'default' },
+    colorscheme = { 'everforest', 'default' },
   },
   change_detection = {
     enable = true,
