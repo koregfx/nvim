@@ -5,7 +5,7 @@ local M = { -- LSP Configuration & Plugins
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-
+    'artemave/workspace-diagnostics.nvim',
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { 'j-hui/fidget.nvim', opts = {} },
@@ -111,7 +111,11 @@ local M = { -- LSP Configuration & Plugins
       cssls = {},
       html = {},
       prismals = {},
-      ts_ls = {},
+      ts_ls = {
+        on_attach = function(client, bufnr)
+          require('workspace-diagnostics').populate_workspace_diagnostics(client, bufnr)
+        end,
+      },
       eslint = {
         setup = {
           capabilities = capabilities,

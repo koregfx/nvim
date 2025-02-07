@@ -1,4 +1,4 @@
-return {
+local M = {
   'luckasRanarison/tailwind-tools.nvim',
   name = 'tailwind-tools',
   build = ':UpdateRemotePlugins',
@@ -9,3 +9,5 @@ return {
   },
   opts = {}, -- your configuration
 }
+
+return M
