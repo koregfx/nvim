@@ -1,5 +1,4 @@
-local mocha = require('catppuccin.palettes').get_palette 'mocha'
-local frappe = require('catppuccin.palettes').get_palette 'frappe'
+local mocha = require 'everforest.colours'
 local icons = require 'kore.icons'
 local mode_color = {
   n = mocha.blue,
@@ -28,7 +27,7 @@ local M = {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
     options = {
-      theme = 'catppuccin',
+      theme = 'everforest',
       component_separators = ' ',
       section_separators = { left = icons.ui.BoldDividerLeft, right = icons.ui.BoldDividerRight },
     },
@@ -79,12 +78,12 @@ local M = {
             align = 'left',
             color = { fg = mocha.crust },
           },
-          color = { fg = mocha.crust, bg = frappe.red },
+          color = { fg = mocha.crust, bg = mocha.red },
           padding = { right = 1 },
         },
         {
           'filename',
-          color = { fg = frappe.red },
+          color = { fg = mocha.red },
           separator = { right = icons.ui.BoldDividerRight, file_status = false },
         },
       },
@@ -119,7 +118,7 @@ local M = {
           function()
             local msg = 'No Active Lsp'
             local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-            local clients = vim.lsp.get_active_clients()
+            local clients = vim.lsp.get_clients()
             if next(clients) == nil then
               return msg
             end
