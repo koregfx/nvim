@@ -6,8 +6,6 @@ local M = { -- LSP Configuration & Plugins
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     'artemave/workspace-diagnostics.nvim',
-    -- Useful status updates for LSP.
-    -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { 'j-hui/fidget.nvim', opts = {} },
   },
   config = function()
